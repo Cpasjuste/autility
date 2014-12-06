@@ -1156,8 +1156,10 @@ public final class RootToolsInternalMethods {
         }
         File path = Environment.getExternalStorageDirectory();
         StatFs stat = new StatFs(path.getPath());
-        long blockSize = stat.getBlockSize();
-        long availableBlocks = stat.getAvailableBlocks();
+        @SuppressWarnings("deprecation")
+		long blockSize = stat.getBlockSize();
+        @SuppressWarnings("deprecation")
+		long availableBlocks = stat.getAvailableBlocks();
         return (updateSize < availableBlocks * blockSize);
     }
 

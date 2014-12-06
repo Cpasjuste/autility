@@ -777,8 +777,10 @@ public class Toolbox {
             String directory = new File(target).getParent().toString();
 
             StatFs stat = new StatFs(directory);
-            long blockSize = stat.getBlockSize();
-            long availableBlocks = stat.getAvailableBlocks();
+            @SuppressWarnings("deprecation")
+			long blockSize = stat.getBlockSize();
+            @SuppressWarnings("deprecation")
+			long availableBlocks = stat.getAvailableBlocks();
             long availableSpace = availableBlocks * blockSize;
 
             Log.i(RootCommands.TAG, "Checking for enough space: Target: " + target

@@ -49,7 +49,8 @@ public class SystemCommands {
      * 
      * @param value
      */
-    @TargetApi(8)
+    @SuppressWarnings("deprecation")
+	@TargetApi(8)
     public void setGPS(boolean value) {
         ContentResolver localContentResolver = context.getContentResolver();
         Settings.Secure.setLocationProviderEnabled(localContentResolver,
