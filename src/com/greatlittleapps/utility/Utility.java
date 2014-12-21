@@ -74,6 +74,24 @@ public class Utility
 		}
 	}
 	
+	public static void logVisible( final String pString )
+	{
+		StackTraceElement stack = new Throwable().fillInStackTrace().getStackTrace()[1];
+		String tag = stack.getClassName()+": "+stack.getLineNumber();
+		try
+		{
+			Log.d( tag, "################################################" );
+			Log.d( tag, "################################################" );		
+			Log.d( tag, stack.getMethodName() + ": " + pString );
+			Log.d( tag, "################################################" );
+			Log.d( tag, "################################################" );
+		}
+		catch( NullPointerException e )
+		{
+			Log.e( tag, "could not log: " + e.toString() );
+		}
+	}
+	
 	public static String formatFileSize( final long size ) 
 	{
 	    if(size <= 0) return "0";
@@ -325,7 +343,7 @@ public class Utility
 	
 	public static void delete(File file) {
 		if(file.isDirectory()){
-			if(file.list().length==0){
+			if(file.list() == null || file.list().length==0){
 				file.delete(); 
 			} else {
 				String files[] = file.list();
