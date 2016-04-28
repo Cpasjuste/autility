@@ -16,7 +16,6 @@ import java.net.NetworkInterface;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.util.Enumeration;
-import org.apache.http.conn.util.InetAddressUtils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -24,10 +23,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.graphics.Point;
+import android.os.Build;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
+
+import org.apache.http.conn.util.InetAddressUtils;
 
 public class Utility 
 {
@@ -52,11 +54,11 @@ public class Utility
 		String tag = stack.getClassName()+": "+stack.getLineNumber();
 		try
 		{
-			Log.d( tag, stack.getMethodName() + ": " + pString );
+			Log.i( tag, stack.getMethodName() + ": " + pString );
 		}
 		catch( NullPointerException e )
 		{
-			Log.e( tag, "could not log: " + e.toString() );
+			Log.i( tag, "could not log: " + e.toString() );
 		}
 	}
 	
@@ -80,11 +82,11 @@ public class Utility
 		String tag = stack.getClassName()+": "+stack.getLineNumber();
 		try
 		{
-			Log.d( tag, "################################################" );
-			Log.d( tag, "################################################" );		
-			Log.d( tag, stack.getMethodName() + ": " + pString );
-			Log.d( tag, "################################################" );
-			Log.d( tag, "################################################" );
+			Log.i( tag, "################################################" );
+			Log.i( tag, "################################################" );
+			Log.i( tag, stack.getMethodName() + ": " + pString );
+			Log.i( tag, "################################################" );
+			Log.i( tag, "################################################" );
 		}
 		catch( NullPointerException e )
 		{
@@ -356,7 +358,7 @@ public class Utility
 				}
 	    	}
 		} else {
-	    	file.delete();
+			file.delete();
 		}
 	}
 }
